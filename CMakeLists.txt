@@ -37,5 +37,8 @@ if ( NOT DEFINED CMAKE_LIBRARY_OUTPUT_DIRECTORY )
 endif ( )
 set ( ${PROJECT_NAME}_PC_REQUIRES "staticlib_io" )
 set ( ${PROJECT_NAME}_PC_CFLAGS "-I${CMAKE_CURRENT_LIST_DIR}/include" )
+if ( ${CMAKE_CXX_COMPILER_ID}x MATCHES "MSVCx" )
+    set ( ${PROJECT_NAME}_PC_LIBS "-lws2_32" )
+endif ( )
 configure_file ( ${CMAKE_CURRENT_LIST_DIR}/resources/pkg-config.in 
         ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/pkgconfig/${PROJECT_NAME}.pc )
