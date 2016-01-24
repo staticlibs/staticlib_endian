@@ -122,6 +122,11 @@
 //#include <sys/param.h>
 
 #if BYTE_ORDER == LITTLE_ENDIAN
+// http://stackoverflow.com/a/25390533/314015
+#if defined(_USING_V110_SDK71_)
+#define htonll(x) _byteswap_uint64(x)
+#define ntohll(x) _byteswap_uint64(x)
+#endif
 
 #define htobe16(x) htons(x)
 #define htole16(x) (x)
