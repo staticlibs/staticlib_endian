@@ -118,6 +118,10 @@
 
 #elif defined(__WINDOWS__)
 
+#define WIN32_LEAN_AND_MEAN
+#define NOMINMAX
+#define UNICODE
+#define _UNICODE
 #include <winsock2.h>
 //#include <sys/param.h>
 
