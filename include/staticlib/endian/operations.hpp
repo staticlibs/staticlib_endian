@@ -41,8 +41,9 @@ namespace endian {
  */
 template<typename IntType, typename Source>
 IntType read_16_le(Source& src) {
+    namespace si = staticlib::io;
     uint16_t res = 0;
-    staticlib::io::read_exact(src, reinterpret_cast<char*> (std::addressof(res)), 2);
+    si::read_exact(src, {reinterpret_cast<char*> (std::addressof(res)), 2});
     return static_cast<IntType> (le16toh(res));
 }
 
@@ -54,8 +55,9 @@ IntType read_16_le(Source& src) {
  */
 template<typename IntType, typename Source>
 IntType read_16_be(Source& src) {
+    namespace si = staticlib::io;
     uint16_t res = 0;
-    staticlib::io::read_exact(src, reinterpret_cast<char*> (std::addressof(res)), 2);
+    si::read_exact(src, {reinterpret_cast<char*> (std::addressof(res)), 2});
     return static_cast<IntType> (be16toh(res));
 }
 
@@ -67,8 +69,9 @@ IntType read_16_be(Source& src) {
  */
 template<typename IntType, typename Source>
 IntType read_32_le(Source& src) {
+    namespace si = staticlib::io;
     uint32_t res = 0;
-    staticlib::io::read_exact(src, reinterpret_cast<char*> (std::addressof(res)), 4);
+    si::read_exact(src, {reinterpret_cast<char*> (std::addressof(res)), 4});
     return static_cast<IntType> (le32toh(res));
 }
 
@@ -80,8 +83,9 @@ IntType read_32_le(Source& src) {
  */
 template<typename IntType, typename Source>
 IntType read_32_be(Source& src) {
+    namespace si = staticlib::io;
     uint32_t res = 0;
-    staticlib::io::read_exact(src, reinterpret_cast<char*> (std::addressof(res)), 4);
+    si::read_exact(src, {reinterpret_cast<char*> (std::addressof(res)), 4});
     return static_cast<IntType> (be32toh(res));
 }
 
@@ -93,8 +97,9 @@ IntType read_32_be(Source& src) {
  */
 template<typename IntType, typename Source>
 IntType read_64_le(Source& src) {
+    namespace si = staticlib::io;
     uint64_t res = 0;
-    staticlib::io::read_exact(src, reinterpret_cast<char*> (std::addressof(res)), 8);
+    si::read_exact(src, {reinterpret_cast<char*> (std::addressof(res)), 8});
     return static_cast<IntType> (le64toh(res));
 }
 
@@ -106,8 +111,9 @@ IntType read_64_le(Source& src) {
  */
 template<typename IntType, typename Source>
 IntType read_64_be(Source& src) {
+    namespace si = staticlib::io;
     uint64_t res = 0;
-    staticlib::io::read_exact(src, reinterpret_cast<char*> (std::addressof(res)), 8);
+    si::read_exact(src, {reinterpret_cast<char*> (std::addressof(res)), 8});
     return static_cast<IntType> (be64toh(res));
 }
 
@@ -119,8 +125,9 @@ IntType read_64_be(Source& src) {
  */
 template<typename IntType, typename Sink>
 void write_16_le(Sink& sink, IntType val) {
+    namespace si = staticlib::io;
     uint16_t val16 = le16toh(static_cast<uint16_t> (val));
-    staticlib::io::write_all(sink, reinterpret_cast<char*> (std::addressof(val16)), 2);
+    si::write_all(sink, {reinterpret_cast<char*> (std::addressof(val16)), 2});
 }
 
 /**
@@ -131,8 +138,9 @@ void write_16_le(Sink& sink, IntType val) {
  */
 template<typename IntType, typename Sink>
 void write_16_be(Sink& sink, IntType val) {
+    namespace si = staticlib::io;
     uint16_t val16 = be16toh(static_cast<uint16_t> (val));
-    staticlib::io::write_all(sink, reinterpret_cast<char*> (std::addressof(val16)), 2);
+    si::write_all(sink, {reinterpret_cast<char*> (std::addressof(val16)), 2});
 }
 
 /**
@@ -143,8 +151,9 @@ void write_16_be(Sink& sink, IntType val) {
  */
 template<typename IntType, typename Sink>
 void write_32_le(Sink& sink, IntType val) {
+    namespace si = staticlib::io;
     uint32_t val32 = le32toh(static_cast<uint32_t> (val));
-    staticlib::io::write_all(sink, reinterpret_cast<char*> (std::addressof(val32)), 4);
+    si::write_all(sink, {reinterpret_cast<char*> (std::addressof(val32)), 4});
 }
 
 /**
@@ -155,8 +164,9 @@ void write_32_le(Sink& sink, IntType val) {
  */
 template<typename IntType, typename Sink>
 void write_32_be(Sink& sink, IntType val) {
+    namespace si = staticlib::io;
     uint32_t val32 = be32toh(static_cast<uint32_t> (val));
-    staticlib::io::write_all(sink, reinterpret_cast<char*> (std::addressof(val32)), 4);
+    si::write_all(sink, {reinterpret_cast<char*> (std::addressof(val32)), 4});
 }
 
 /**
@@ -167,8 +177,9 @@ void write_32_be(Sink& sink, IntType val) {
  */
 template<typename IntType, typename Sink>
 void write_64_le(Sink& sink, IntType val) {
+    namespace si = staticlib::io;
     uint64_t val64 = le64toh(static_cast<uint64_t> (val));
-    staticlib::io::write_all(sink, reinterpret_cast<char*> (std::addressof(val64)), 8);
+    si::write_all(sink, {reinterpret_cast<char*> (std::addressof(val64)), 8});
 }
 
 /**
@@ -179,8 +190,9 @@ void write_64_le(Sink& sink, IntType val) {
  */
 template<typename IntType, typename Sink>
 void write_64_be(Sink& sink, IntType val) {
+    namespace si = staticlib::io;
     uint64_t val64 = be64toh(static_cast<uint64_t> (val));
-    staticlib::io::write_all(sink, reinterpret_cast<char*> (std::addressof(val64)), 8);
+    si::write_all(sink, {reinterpret_cast<char*> (std::addressof(val64)), 8});
 }
 
 } // namespace
