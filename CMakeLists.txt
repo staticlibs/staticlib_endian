@@ -15,7 +15,7 @@
 cmake_minimum_required ( VERSION 2.8.12 )
 
 project ( staticlib_endian CXX )
-set ( ${PROJECT_NAME}_STATICLIB_VERSION 1.0.1 )
+set ( ${PROJECT_NAME}_STATICLIB_VERSION 1.0.2 )
 set ( ${PROJECT_NAME}_DESCRIPTION "Staticlibs Endian library" )
 set ( ${PROJECT_NAME}_URL https://github.com/staticlibs/staticlib_endian )
 include ( ${CMAKE_CURRENT_LIST_DIR}/resources/macros.cmake )
@@ -32,8 +32,14 @@ if ( NOT DEFINED CMAKE_LIBRARY_OUTPUT_DIRECTORY )
     set ( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR} )
 endif ( )
 if ( NOT DEFINED STATICLIB_TOOLCHAIN )
+    staticlib_endian_add_subdirectory ( ${CMAKE_CURRENT_LIST_DIR}/../staticlib_config )
+    staticlib_endian_add_subdirectory ( ${CMAKE_CURRENT_LIST_DIR}/../staticlib_support )
     staticlib_endian_add_subdirectory ( ${CMAKE_CURRENT_LIST_DIR}/../staticlib_io )
 endif ( )
+
+# dependencies
+set ( ${PROJECT_NAME}_DEPS staticlib_io )
+staticlib_endian_pkg_check_modules ( ${PROJECT_NAME}_DEPS_PC REQUIRED ${PROJECT_NAME}_DEPS )
 
 # target
 file ( GLOB_RECURSE ${PROJECT_NAME}_HEADERS ${CMAKE_CURRENT_LIST_DIR}/include/*.hpp )
@@ -41,10 +47,10 @@ source_group ( "include" FILES ${${PROJECT_NAME}_HEADERS} )
 add_custom_target ( ${PROJECT_NAME} SOURCES ${${PROJECT_NAME}_HEADERS} )
 
 # pkg-config
-set ( ${PROJECT_NAME}_PC_REQUIRES "staticlib_io" )
 set ( ${PROJECT_NAME}_PC_CFLAGS "-I${CMAKE_CURRENT_LIST_DIR}/include" )
 if ( ${CMAKE_CXX_COMPILER_ID}x MATCHES "MSVCx" )
     set ( ${PROJECT_NAME}_PC_LIBS "-lws2_32" )
 endif ( )
+staticlib_io_list_to_string ( ${PROJECT_NAME}_PC_REQUIRES "" ${PROJECT_NAME}_DEPS )
 configure_file ( ${CMAKE_CURRENT_LIST_DIR}/resources/pkg-config.in 
         ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/pkgconfig/${PROJECT_NAME}.pc )

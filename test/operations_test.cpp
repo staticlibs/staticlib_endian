@@ -30,84 +30,81 @@
 
 #include "staticlib/config/assert.hpp"
 
-namespace io = staticlib::io;
-namespace en = staticlib::endian;
-
 void test_read_16_le() {
-    io::string_source src{"42"};
-    int16_t val = en::read_16_le<int16_t>(src);
+    sl::io::string_source src{"42"};
+    int16_t val = sl::endian::read_16_le<int16_t>(src);
     slassert(12852 == val);
 }
 
 void test_read_16_be() {
-    io::string_source src{"42"};
-    int16_t val = en::read_16_be<int16_t>(src);
+    sl::io::string_source src{"42"};
+    int16_t val = sl::endian::read_16_be<int16_t>(src);
     slassert(13362 == val);
 }
 
 void test_read_32_le() {
-    io::string_source src{"4256"};
-    int32_t val = en::read_32_le<int32_t>(src);
+    sl::io::string_source src{"4256"};
+    int32_t val = sl::endian::read_32_le<int32_t>(src);
     slassert(909455924 == val);
 }
 
 void test_read_32_be() {
-    io::string_source src{"4256"};
-    int32_t val = en::read_32_be<int32_t>(src);    
+    sl::io::string_source src{"4256"};
+    int32_t val = sl::endian::read_32_be<int32_t>(src);    
     slassert(875705654 == val);
 }
 
 void test_read_64_le() {
-    io::string_source src{"42563178"};
-    int64_t val = en::read_64_le<int64_t>(src);
+    sl::io::string_source src{"42563178"};
+    int64_t val = sl::endian::read_64_le<int64_t>(src);
     slassert(4050760485865599540ll == val);
 }
 
 void test_read_64_be() {
-    io::string_source src{"42563178"};
-    int64_t val = en::read_64_be<int64_t>(src);
+    sl::io::string_source src{"42563178"};
+    int64_t val = sl::endian::read_64_be<int64_t>(src);
     slassert(3761127145711155000ll == val);
 }
 
 void test_write_16_le() {
-    io::string_sink sink{};
+    sl::io::string_sink sink{};
     int16_t val = 12852;
-    en::write_16_le(sink, val);
+    sl::endian::write_16_le(sink, val);
     slassert("42" == sink.get_string());
 }
 
 void test_write_16_be() {
-    io::string_sink sink{};
+    sl::io::string_sink sink{};
     int16_t val = 13362;
-    en::write_16_be(sink, val);
+    sl::endian::write_16_be(sink, val);
     slassert("42" == sink.get_string());
 }
 
 void test_write_32_le() {
-    io::string_sink sink{};
+    sl::io::string_sink sink{};
     int32_t val = 909455924;
-    en::write_32_le(sink, val);
+    sl::endian::write_32_le(sink, val);
     slassert("4256" == sink.get_string());
 }
 
 void test_write_32_be() {
-    io::string_sink sink{};
+    sl::io::string_sink sink{};
     int32_t val = 875705654;
-    en::write_32_be(sink, val);
+    sl::endian::write_32_be(sink, val);
     slassert("4256" == sink.get_string());
 }
 
 void test_write_64_le() {
-    io::string_sink sink{};
+    sl::io::string_sink sink{};
     int64_t val = 4050760485865599540ll;
-    en::write_64_le(sink, val);
+    sl::endian::write_64_le(sink, val);
     slassert("42563178" == sink.get_string());
 }
 
 void test_write_64_be() {
-    io::string_sink sink{};
+    sl::io::string_sink sink{};
     int64_t val = 3761127145711155000ll;
-    en::write_64_be(sink, val);
+    sl::endian::write_64_be(sink, val);
     slassert("42563178" == sink.get_string());
 }
 

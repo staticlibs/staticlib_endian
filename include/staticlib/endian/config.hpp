@@ -42,7 +42,6 @@
 #include <endian.h>
 
 #ifdef __ANDROID__
-// todo: untested, check correctness on device
 
 #ifndef __ARMEB__ // little endian
 
