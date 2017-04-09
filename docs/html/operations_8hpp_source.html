@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">staticlib_endian
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
   </td>
  </tr>
@@ -115,7 +115,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;staticlib/io/operations.hpp&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;staticlib/io.hpp&quot;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="config_8hpp.html">staticlib/endian/config.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
@@ -125,79 +125,79 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> IntType, <span class="keyword">typename</span> Source&gt;</div>
 <div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="namespacestaticlib_1_1endian.html#af67a88c06854d626484554c4a4ac30d9">   43</a></span>&#160;IntType <a class="code" href="namespacestaticlib_1_1endian.html#af67a88c06854d626484554c4a4ac30d9" title="Reads 2-byte little-endian integer from the specified source.">read_16_le</a>(Source&amp; src) {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    uint16_t res = 0;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    staticlib::io::read_exact(src, reinterpret_cast&lt;char*&gt; (std::addressof(res)), 2);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    sl::io::read_exact(src, {<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span> (std::addressof(res)), 2});</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>IntType<span class="keyword">&gt;</span> (le16toh(res));</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> IntType, <span class="keyword">typename</span> Source&gt;</div>
 <div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="namespacestaticlib_1_1endian.html#a7449e2185c8e877d6472a9ccdfcf41de">   56</a></span>&#160;IntType <a class="code" href="namespacestaticlib_1_1endian.html#a7449e2185c8e877d6472a9ccdfcf41de" title="Reads 2-byte big-endian integer from the specified source.">read_16_be</a>(Source&amp; src) {</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    uint16_t res = 0;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    staticlib::io::read_exact(src, reinterpret_cast&lt;char*&gt; (std::addressof(res)), 2);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    sl::io::read_exact(src, {<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span> (std::addressof(res)), 2});</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>IntType<span class="keyword">&gt;</span> (be16toh(res));</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> IntType, <span class="keyword">typename</span> Source&gt;</div>
 <div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="namespacestaticlib_1_1endian.html#a6021ff3733c1aca6e2c7a5763f1c76c7">   69</a></span>&#160;IntType <a class="code" href="namespacestaticlib_1_1endian.html#a6021ff3733c1aca6e2c7a5763f1c76c7" title="Reads 4-byte little-endian integer from the specified source.">read_32_le</a>(Source&amp; src) {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    uint32_t res = 0;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    staticlib::io::read_exact(src, reinterpret_cast&lt;char*&gt; (std::addressof(res)), 4);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    sl::io::read_exact(src, {<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span> (std::addressof(res)), 4});</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>IntType<span class="keyword">&gt;</span> (le32toh(res));</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> IntType, <span class="keyword">typename</span> Source&gt;</div>
 <div class="line"><a name="l00082"></a><span class="lineno"><a class="code" href="namespacestaticlib_1_1endian.html#afc1f7ff18d1f28480e32f8d93b9bef8c">   82</a></span>&#160;IntType <a class="code" href="namespacestaticlib_1_1endian.html#afc1f7ff18d1f28480e32f8d93b9bef8c" title="Reads 4-byte big-endian integer from the specified source.">read_32_be</a>(Source&amp; src) {</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    uint32_t res = 0;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    staticlib::io::read_exact(src, reinterpret_cast&lt;char*&gt; (std::addressof(res)), 4);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    sl::io::read_exact(src, {<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span> (std::addressof(res)), 4});</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>IntType<span class="keyword">&gt;</span> (be32toh(res));</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> IntType, <span class="keyword">typename</span> Source&gt;</div>
 <div class="line"><a name="l00095"></a><span class="lineno"><a class="code" href="namespacestaticlib_1_1endian.html#aea5e4e0848614590b540b20a7bd3d6d1">   95</a></span>&#160;IntType <a class="code" href="namespacestaticlib_1_1endian.html#aea5e4e0848614590b540b20a7bd3d6d1" title="Reads 8-byte little-endian integer from the specified source.">read_64_le</a>(Source&amp; src) {</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    uint64_t res = 0;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    staticlib::io::read_exact(src, reinterpret_cast&lt;char*&gt; (std::addressof(res)), 8);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    sl::io::read_exact(src, {<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span> (std::addressof(res)), 8});</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>IntType<span class="keyword">&gt;</span> (le64toh(res));</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> IntType, <span class="keyword">typename</span> Source&gt;</div>
 <div class="line"><a name="l00108"></a><span class="lineno"><a class="code" href="namespacestaticlib_1_1endian.html#a94e519ac4ad12656b85365a60a61db8b">  108</a></span>&#160;IntType <a class="code" href="namespacestaticlib_1_1endian.html#a94e519ac4ad12656b85365a60a61db8b" title="Reads 8-byte big-endian integer from the specified source.">read_64_be</a>(Source&amp; src) {</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    uint64_t res = 0;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    staticlib::io::read_exact(src, reinterpret_cast&lt;char*&gt; (std::addressof(res)), 8);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    sl::io::read_exact(src, {<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span> (std::addressof(res)), 8});</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>IntType<span class="keyword">&gt;</span> (be64toh(res));</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> IntType, <span class="keyword">typename</span> Sink&gt;</div>
 <div class="line"><a name="l00121"></a><span class="lineno"><a class="code" href="namespacestaticlib_1_1endian.html#a309821f34597dae87b3652ff90797c0f">  121</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacestaticlib_1_1endian.html#a309821f34597dae87b3652ff90797c0f" title="Writes specified 2-byte integer to the specified sink in little-endian.">write_16_le</a>(Sink&amp; sink, IntType val) {</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    uint16_t val16 = le16toh(static_cast&lt;uint16_t&gt; (val));</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    staticlib::io::write_all(sink, reinterpret_cast&lt;char*&gt; (std::addressof(val16)), 2);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    sl::io::write_all(sink, {<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span> (std::addressof(val16)), 2});</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> IntType, <span class="keyword">typename</span> Sink&gt;</div>
 <div class="line"><a name="l00133"></a><span class="lineno"><a class="code" href="namespacestaticlib_1_1endian.html#a6975f5a36f7491192eea8ea8ea96fd91">  133</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacestaticlib_1_1endian.html#a6975f5a36f7491192eea8ea8ea96fd91" title="Writes specified 2-byte integer to the specified sink in big-endian.">write_16_be</a>(Sink&amp; sink, IntType val) {</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    uint16_t val16 = be16toh(static_cast&lt;uint16_t&gt; (val));</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    staticlib::io::write_all(sink, reinterpret_cast&lt;char*&gt; (std::addressof(val16)), 2);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    sl::io::write_all(sink, {<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span> (std::addressof(val16)), 2});</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> IntType, <span class="keyword">typename</span> Sink&gt;</div>
 <div class="line"><a name="l00145"></a><span class="lineno"><a class="code" href="namespacestaticlib_1_1endian.html#ac42cd83fb8ad4d04b2bbd56321e4e1b8">  145</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacestaticlib_1_1endian.html#ac42cd83fb8ad4d04b2bbd56321e4e1b8" title="Writes specified 4-byte integer to the specified sink in little-endian.">write_32_le</a>(Sink&amp; sink, IntType val) {</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    uint32_t val32 = le32toh(static_cast&lt;uint32_t&gt; (val));</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    staticlib::io::write_all(sink, reinterpret_cast&lt;char*&gt; (std::addressof(val32)), 4);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    sl::io::write_all(sink, {<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span> (std::addressof(val32)), 4});</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;}</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> IntType, <span class="keyword">typename</span> Sink&gt;</div>
 <div class="line"><a name="l00157"></a><span class="lineno"><a class="code" href="namespacestaticlib_1_1endian.html#a7826bdc582e68f4497eb2d803d971586">  157</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacestaticlib_1_1endian.html#a7826bdc582e68f4497eb2d803d971586" title="Writes specified 4-byte integer to the specified sink in big-endian.">write_32_be</a>(Sink&amp; sink, IntType val) {</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    uint32_t val32 = be32toh(static_cast&lt;uint32_t&gt; (val));</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    staticlib::io::write_all(sink, reinterpret_cast&lt;char*&gt; (std::addressof(val32)), 4);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    sl::io::write_all(sink, {<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span> (std::addressof(val32)), 4});</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> IntType, <span class="keyword">typename</span> Sink&gt;</div>
 <div class="line"><a name="l00169"></a><span class="lineno"><a class="code" href="namespacestaticlib_1_1endian.html#a3d847e2e3ff39b7f32af6c5219ff476d">  169</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacestaticlib_1_1endian.html#a3d847e2e3ff39b7f32af6c5219ff476d" title="Writes specified 8-byte integer to the specified sink in little-endian.">write_64_le</a>(Sink&amp; sink, IntType val) {</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    uint64_t val64 = le64toh(static_cast&lt;uint64_t&gt; (val));</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    staticlib::io::write_all(sink, reinterpret_cast&lt;char*&gt; (std::addressof(val64)), 8);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    sl::io::write_all(sink, {<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span> (std::addressof(val64)), 8});</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> IntType, <span class="keyword">typename</span> Sink&gt;</div>
 <div class="line"><a name="l00181"></a><span class="lineno"><a class="code" href="namespacestaticlib_1_1endian.html#ac3151b15b602cf0d443a789d3a339888">  181</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespacestaticlib_1_1endian.html#ac3151b15b602cf0d443a789d3a339888" title="Writes specified 8-byte integer to the specified sink in big-endian.">write_64_be</a>(Sink&amp; sink, IntType val) {</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    uint64_t val64 = be64toh(static_cast&lt;uint64_t&gt; (val));</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    staticlib::io::write_all(sink, reinterpret_cast&lt;char*&gt; (std::addressof(val64)), 8);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    sl::io::write_all(sink, {<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span> (std::addressof(val64)), 8});</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;} <span class="comment">// namespace</span></div>
@@ -208,7 +208,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 25 2015 14:33:58 for staticlib_endian by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 9 2017 10:04:35 for staticlib_endian by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
