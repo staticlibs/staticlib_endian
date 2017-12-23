@@ -22,7 +22,7 @@
  */
 
 #ifndef STATICLIB_ENDIAN_OPERATIONS_HPP
-#define	STATICLIB_ENDIAN_OPERATIONS_HPP
+#define STATICLIB_ENDIAN_OPERATIONS_HPP
 
 #include <cstdint>
 
@@ -186,5 +186,5 @@ void write_64_be(Sink& sink, IntType val) {
 } // namespace
 }
 
-#endif	/* STATICLIB_ENDIAN_OPERATIONS_HPP */
+#endif /* STATICLIB_ENDIAN_OPERATIONS_HPP */
 

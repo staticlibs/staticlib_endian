@@ -1,6 +1,9 @@
 Staticlibs Endian library
 =========================
 
+[![travis](https://travis-ci.org/staticlibs/staticlib_endian.svg?branch=master)](https://travis-ci.org/staticlibs/staticlib_endian)
+[![appveyor](https://ci.appveyor.com/api/projects/status/github/staticlibs/staticlib_endian?svg=true)](https://ci.appveyor.com/project/staticlibs/staticlib-endian)
+
 This project is a part of [Staticlibs](http://staticlibs.net/).
 
 This project provides cross-platform endian-specific macros based on this Public Domain 
@@ -26,13 +29,13 @@ Operations on Sources/Sinks
 
 Reading integers from `Source`:
 
- - `read_XX_le(Source&)`: reads little-endian integer
- - `read_XX_be(Source&)`: reads big-endian integer
+ - `sl::endian::read_XX_le(Source&)`: reads little-endian integer
+ - `sl::endian::read_XX_be(Source&)`: reads big-endian integer
 
 Writing integers to `Sink`:
 
- - `write_16_le(Sink&, uintXX_t)`: writes integer in little-endian
- - `write_16_be(Sink&, uintXX_t)`: writes integer in big-endian
+ - `sl::endian::write_16_le(Sink&, uintXX_t)`: writes integer in little-endian
+ - `sl::endian::write_16_be(Sink&, uintXX_t)`: writes integer in big-endian
 
 License information
 -------------------
@@ -41,6 +44,10 @@ This project is released under the [Apache License 2.0](http://www.apache.org/li
 
 Changelog
 ---------
+
+**2017-12-23**
+ * version 1.0.3
+ * vs2017 support
 
 **2017-04-08**
  * version 1.0.2

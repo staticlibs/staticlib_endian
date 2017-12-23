@@ -22,12 +22,15 @@
  */
 
 #ifndef STATICLIB_ENDIAN_HPP
-#define	STATICLIB_ENDIAN_HPP
+#define STATICLIB_ENDIAN_HPP
 
 #include "staticlib/config.hpp"
 
 #include "staticlib/endian/config.hpp"
 #include "staticlib/endian/operations.hpp"
 
-#endif	/* STATICLIB_ENDIAN_HPP */
+// export namespace with shorter name
+namespace sl = staticlib;
+
+#endif /* STATICLIB_ENDIAN_HPP */
 

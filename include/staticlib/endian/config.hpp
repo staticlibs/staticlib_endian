@@ -29,7 +29,7 @@
  */
 
 #ifndef STATICLIB_ENDIAN_CONFIG_HPP
-#define	STATICLIB_ENDIAN_CONFIG_HPP
+#define STATICLIB_ENDIAN_CONFIG_HPP
 
 #if (defined(_WIN16) || defined(_WIN32) || defined(_WIN64)) && !defined(__WINDOWS__)
 
@@ -182,5 +182,5 @@
 #endif
 
 
-#endif	/* STATICLIB_ENDIAN_CONFIG_HPP */
+#endif /* STATICLIB_ENDIAN_CONFIG_HPP */
 
