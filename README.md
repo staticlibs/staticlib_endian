@@ -45,6 +45,10 @@ This project is released under the [Apache License 2.0](http://www.apache.org/li
 Changelog
 ---------
 
+**2018-06-21**
+ * version 1.0.4
+ * win 64-bit ops fix
+
 **2017-12-23**
  * version 1.0.3
  * vs2017 support
