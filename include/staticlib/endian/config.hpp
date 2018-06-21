@@ -117,19 +117,27 @@
 
 #elif defined(__WINDOWS__)
 
+#ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
+#endif //!WIN32_LEAN_AND_MEAN
+#ifndef NOMINMAX
 #define NOMINMAX
+#endif //!NOMINMAX
+#ifndef UNICODE
 #define UNICODE
+#endif //!UNICODE
+#ifndef _UNICODE
 #define _UNICODE
+#endif //!_UNICODE
 
 #if BYTE_ORDER == LITTLE_ENDIAN
 // these two functions are hidden for some reason
 #ifndef htonll
 #define htonll(x) _byteswap_uint64(x)
-#endif // !htonll
+#endif //!htonll
 #ifndef ntohll
 #define ntohll(x) _byteswap_uint64(x)
-#endif
+#endif //!ntohll
 #include <winsock2.h>
 
 #define htobe16(x) htons(x)
