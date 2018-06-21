@@ -121,15 +121,16 @@
 #define NOMINMAX
 #define UNICODE
 #define _UNICODE
-#include <winsock2.h>
-//#include <sys/param.h>
 
 #if BYTE_ORDER == LITTLE_ENDIAN
-// http://stackoverflow.com/a/25390533/314015
-#if defined(_USING_V110_SDK71_)
+// these two functions are hidden for some reason
+#ifndef htonll
 #define htonll(x) _byteswap_uint64(x)
+#endif // !htonll
+#ifndef ntohll
 #define ntohll(x) _byteswap_uint64(x)
 #endif
+#include <winsock2.h>
 
 #define htobe16(x) htons(x)
 #define htole16(x) (x)
@@ -149,6 +150,8 @@
 #elif BYTE_ORDER == BIG_ENDIAN
 
 /* that would be xbox 360 */
+#include <winsock2.h>
+
 #define htobe16(x) (x)
 #define htole16(x) __builtin_bswap16(x)
 #define be16toh(x) (x)
